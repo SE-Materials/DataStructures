@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  DataStructures
+//  RearrangeSortedArrInMinMax
 //
-//  Created by Aniket Bhushan on 03/10/19.
+//  Created by Aniket Bhushan on 07/10/19.
 //  Copyright © 2019 Aniket Bhushan. All rights reserved.
 //
 
