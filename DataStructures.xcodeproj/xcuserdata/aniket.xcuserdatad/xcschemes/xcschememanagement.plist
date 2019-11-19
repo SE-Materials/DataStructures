@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>20</integer>
 		</dict>
+		<key>CombinationSum.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
 		<key>DataStructures.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
