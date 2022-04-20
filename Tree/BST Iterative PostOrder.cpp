@@ -13,7 +13,9 @@
 
 // Pre order of : image tree -> reverse(pre order (l <-> r))
 
-class Solution {
+// ------------------------------------------------------------------------------------
+// Method 1: With stack + reverse
+class Solution1 {
 public:
     vector<int> postorderTraversal(TreeNode* root) 
     {
@@ -37,6 +39,49 @@ public:
         }
         
         std::reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+
+
+// ------------------------------------------------------------------------------------
+// Method 2: With stack only
+class Solution2 {
+public:
+    vector<int> postorderTraversal(TreeNode* root) 
+    {
+        vector<int>      ans;
+        stack<TreeNode*> st;
+        
+        if (root == nullptr)
+            return ans;
+        
+        while (!st.empty() || root != nullptr)
+        {
+            while (root != nullptr)
+            {
+                st.push(root);
+                root = root->left;
+            }
+            
+            auto right = st.top()->right;
+            
+            if (right != nullptr)
+            {
+                root = right;
+            }
+            else
+            {
+                auto node = st.top(); st.pop();
+                while (!st.empty() && st.top()->right == node)
+                {
+                    ans.push_back(node->val);
+                    node = st.top(); st.pop();
+                }
+                ans.push_back(node->val);
+            }
+        }
+
         return ans;
     }
 };
