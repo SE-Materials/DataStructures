@@ -1,16 +1,22 @@
 // https://leetcode.com/problems/diameter-of-binary-tree/
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
+#include <iostream>
+#include <queue>
+#include <unordered_map>
+
+using namespace std;
+
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+
 class Solution {
     
     int ans;
@@ -26,11 +32,15 @@ class Solution {
         return 1 + max(ln, rn);
     }
   
-   int bfs()
+   int bfs(TreeNode* root)
    {
        // using BFS
         queue<TreeNode*> Q;
         Q.push(root);
+
+        unordered_map<TreeNode*, TreeNode*> parent;
+        unordered_map<TreeNode*, int>       height;
+
         height[root] = 0;
         int deepestH = 0;
         TreeNode* deepestNode = root;
